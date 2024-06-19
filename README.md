@@ -1,4 +1,6 @@
 # Keyword Planner
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/umutkorkmaz)
+
 This tool makes suggestions based on the keyword provided, using the Google Keyword Planner API.
 
 This tool allows you to save keywords as CSV and also contains search volumes for keywords.
