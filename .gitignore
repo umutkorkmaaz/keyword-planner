@@ -1,0 +1,5 @@
+*.csv
+*.json
+*.log
+google-ads.yaml
+venv/
