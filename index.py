@@ -1,4 +1,3 @@
-from math import e
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 import pandas as pd
@@ -9,6 +8,20 @@ customer_id = ""
 keyword_text = ""
 fileName = ""
 output = False
+developer_token= ''
+client_id= ''
+client_secret= ''
+refresh_token= ''
+
+google_ads_client = GoogleAdsClient.load_from_dict(
+    {
+        "developer_token": developer_token,
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "refresh_token": refresh_token,
+        "use_proto_plus": True
+    }
+)
 
 parser = argparse.ArgumentParser(description="Google Ads API keyword suggestion tool")
 
@@ -17,7 +30,7 @@ parser.add_argument(
     "-c",
     type=str,
     help="Google Ads customer ID",
-    required=True,
+    required=False,
 )
 parser.add_argument(
     "--keyword", "-w", type=str, nargs="+", help="Keyword to get suggestions for"
@@ -64,18 +77,6 @@ if output is True:
         fileName = args.output + ".csv"
 
 
-if args.customer_id:
-    customer_id = args.customer_id
-    if args.quiet is False:
-        quiet_print(f"Using provided customer ID: {customer_id}")
-else:
-    if args.quiet is False:
-        quiet_print("Usage: python index.py --customer-id [customer_id]")
-
-    exit(1)
-
-
-google_ads_client = GoogleAdsClient.load_from_storage(path="google-ads.yaml")
 keywordList = pd.DataFrame(columns=["Keyword", "Avg. Monthly Searches"])
 
 
