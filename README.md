@@ -22,7 +22,7 @@ chmod +x scripts/install.sh
 ## Usage
 
 ```bash
-usage: index.py [-h] --customer-id CUSTOMER_ID [--keyword KEYWORD [KEYWORD ...]] [--output OUTPUT] [--quiet]
+usage: kwplanner [-h] --customer-id CUSTOMER_ID [--keyword KEYWORD [KEYWORD ...]] [--output OUTPUT] [--quiet]
 
 Google Ads API keyword suggestion tool
 
@@ -37,8 +37,13 @@ options:
   --quiet, -q           Suppress output to console
 ```
 
-## Example
+## Examples
 
+Rename output csv file
 ```bash
-python index.py -q -c [CUSTOMER_ID] -w [KEYWORD] --output example
+kwplanner -q -c [CUSTOMER_ID] -w [KEYWORD] --output example
+```
+Reorder the output csv file
+```bash
+kwplanner -q -w keyword | sort -k3,3n -t',' keyword.csv
 ```
