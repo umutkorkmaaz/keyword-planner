@@ -4,14 +4,15 @@ import pandas as pd
 from slugify import slugify
 import argparse
 
-customer_id = ""
-keyword_text = ""
-fileName = ""
+
+keyword_text = ''
+fileName = ''
 output = False
-developer_token= ''
-client_id= ''
-client_secret= ''
-refresh_token= ''
+customer_id = ''
+developer_token = ''
+client_id = ''
+client_secret = ''
+refresh_token = ''
 
 google_ads_client = GoogleAdsClient.load_from_dict(
     {
@@ -64,6 +65,16 @@ if args.keyword:
 else:
     quiet_print("Usage: python index.py --keyword [keyword]")
     exit(1)
+
+if args.customer_id:
+    customer_id = args.customer_id
+elif customer_id == "":
+    quiet_print("No customer ID provided")
+    exit(1)
+else:
+    quiet_print(f"Using customer ID: {customer_id}")
+
+
 
 if args.output is None:
     output = False

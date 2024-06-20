@@ -11,6 +11,14 @@ This tool allows you to save keywords as CSV and also contains search volumes fo
 pip install -r requirements.txt
 ```
 
+or 
+
+```bash
+chmod +x scripts/install.sh
+./scripts/install.sh [customer_id] [developer_token] [client_id] [client_secret] [refresh_token]
+```
+
+
 ## Usage
 
 ```bash
