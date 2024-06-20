@@ -3,3 +3,7 @@
 *.log
 google-ads.yaml
 venv/
+build/
+dist/
+/**/*__pycache__/
+*.spec
