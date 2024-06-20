@@ -11,7 +11,7 @@ This tool allows you to save keywords as CSV and also contains search volumes fo
 chmod +x scripts/install.sh
 ./scripts/install.sh [customer_id] [developer_token] [client_id] [client_secret] [refresh_token]
 ```
-
+_Tested on macOS Sonoma 14.5 and Debian 12_
 
 ## Usage
 

@@ -34,13 +34,27 @@ client_id=$3
 client_secret=$4
 refresh_token=$5
 
-sed -i '' "s|customer_id = '.*'|customer_id = '$customer_id'|" index.py
-sed -i '' "s|developer_token = '.*'|developer_token = '$developer_token'|" index.py
-sed -i '' "s|client_id = '.*'|client_id = '$client_id'|" index.py
-sed -i '' "s|client_secret = '.*'|client_secret = '$client_secret'|" index.py
-sed -i '' "s|refresh_token = '.*'|refresh_token = '$refresh_token'|" index.py
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SED_CMD="sed -i ''"
+else
+    SED_CMD="sed -i"
+fi
 
-#venv is not exist then create venv
+$SED_CMD "s|customer_id = '.*'|customer_id = '$customer_id'|" index.py
+if [ $? -ne 0 ]; then echo "Failed to update customer_id"; exit 1; fi
+
+$SED_CMD "s|developer_token = '.*'|developer_token = '$developer_token'|" index.py
+if [ $? -ne 0 ]; then echo "Failed to update developer_token"; exit 1; fi
+
+$SED_CMD "s|client_id = '.*'|client_id = '$client_id'|" index.py
+if [ $? -ne 0 ]; then echo "Failed to update client_id"; exit 1; fi
+
+$SED_CMD "s|client_secret = '.*'|client_secret = '$client_secret'|" index.py
+if [ $? -ne 0 ]; then echo "Failed to update client_secret"; exit 1; fi
+
+$SED_CMD "s|refresh_token = '.*'|refresh_token = '$refresh_token'|" index.py
+if [ $? -ne 0 ]; then echo "Failed to update refresh_token"; exit 1; fi
+
 if [ ! -d "venv" ]; then
     python3 -m venv venv
 fi
@@ -56,5 +70,4 @@ sudo mv dist/kwplanner /usr/local/bin/
 
 echo "Setup complete. The executable is now available in /usr/local/bin"
 
-# disable venv
 source deactivate
